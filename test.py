@@ -12,7 +12,6 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 while True:
-    # Nhập tên ảnh từ người dùng
     image_path = input("Nhập tên ảnh (hoặc 'exit' để thoát): ")
 
     if image_path.lower() == 'exit':
@@ -57,7 +56,7 @@ while True:
         colors = np.random.uniform(0, 255, size=(len(boxes), 3))
 
         if len(indexes) > 0:
-            for i in indexes.flatten():Q
+            for i in indexes.flatten():
                 x, y, w, h = boxes[i]
                 label = str(classes[class_ids[i]])
 
@@ -66,17 +65,14 @@ while True:
                 if not os.path.exists(label_folder):
                     os.makedirs(label_folder)
 
-                # Lưu ảnh cắt vào thư mục label
                 cropped_img = img[y:y + h, x:x + w]
                 cv2.imwrite(os.path.join(label_folder, f'cropped_{i}.jpg'), cropped_img)
 
-        # Hiển thị ảnh gốc với bounding boxes
-        cv2.imshow('image', img)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+            cv2.imshow('image', img)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
     except Exception as e:
         print(f"Lỗi: {e}")
 
-# Kết thúc chương trình
 print("Thoát chương trình.")
