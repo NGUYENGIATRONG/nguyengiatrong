@@ -76,3 +76,4 @@ while True:
         print(f"Lỗi: {e}")
 
 print("Thoát chương trình.")
+print("ok")
